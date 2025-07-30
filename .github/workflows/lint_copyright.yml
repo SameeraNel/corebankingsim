@@ -25,7 +25,7 @@ jobs:
         uses: github/super-linter@v4
         env:
           VALIDATE_ALL_CODEBASE: false
-          DEFAULT_BRANCH: "master"
+          DEFAULT_BRANCH: "feature/workflow_test"
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           
   run-copyright-check:
@@ -35,6 +35,6 @@ jobs:
        uses: liquiddevelopmentnet/copyright-check-action@stable-1.0
        with:
         # In which path you wanna check
-        path: src/**/*.js
+        path: src/**/*.java
         # For what should the action check
         string: // Copyright (C) 2021 Example, Inc. All Rights reserved.
