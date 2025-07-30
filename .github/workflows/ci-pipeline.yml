@@ -13,9 +13,20 @@ jobs:
         run: |
           ls ${{ github.workspace }}
           
-  Run_Linters:
+  # Run_Linters:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: super-linter/super-linter@v7.1.0
+      
+  Check_Copyrights:
     runs-on: ubuntu-latest
     steps:
-      - uses: super-linter/super-linter@v7.1.0
-
-    
+      - name: check-license-header
+        uses: viperproject/check-license-header@v2.0.3
+        with:
+        # Path to working directory
+          path: /
+        # Path to JSON config file
+          config: /
+        # Specifies whether files not covered by the configuration should be treated as errors
+          strict: test.java
