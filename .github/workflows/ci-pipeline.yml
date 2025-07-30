@@ -1,0 +1,21 @@
+name: Core Banking Sim App CI Pipeline
+run-name: Core Banking Sim App CI Pipeline - Run
+on: [push]
+jobs:
+  Explore-GitHub-Actions:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Triggered on the branch - ${{ github.ref }} in the repository - ${{ github.repository }}."
+      - name: Check out repository code
+        uses: actions/checkout@v4
+      - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
+      - name: List files in the repository
+        run: |
+          ls ${{ github.workspace }}
+          
+  Run_Linters:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: super-linter/super-linter@v7.1.0
+
+    
