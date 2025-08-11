@@ -32,3 +32,13 @@ jobs:
         path: src/**/*.java
         # For what should the action check
         string: // Copyright (C) 2021 Example, Inc. All Rights reserved.
+
+ run-fortify-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fortify AST Scan
+      uses: fortify/github-action@v1.0.0
+      with:
+        # Run a SAST scan, takes either true or false (default)
+        sast-scan: true
+          
