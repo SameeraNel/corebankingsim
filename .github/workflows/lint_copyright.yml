@@ -35,9 +35,11 @@ jobs:
         
   run-fortify-check:
     runs-on: ubuntu-latest
-    steps:
-      - name: Fortify AST Scan
-        uses: fortify/github-action@v1.0.0
+    steps:    
+      - name: Check out source code
+        uses: actions/checkout@v4  
+      - name: Run ScanCentral SAST & Debricked scan
+        uses: fortify/github-action@v2
         with:
-          # Run a SAST scan, takes either true or false (default)
           sast-scan: true
+          debricked-sca-scan: true
