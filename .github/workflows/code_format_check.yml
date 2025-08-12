@@ -1,0 +1,53 @@
+name: Code Format Check
+
+on:
+  push:
+    branches: [ "feature/workflow_test" ]
+  pull_request:
+    branches: [ "feature/workflow_test" ]
+jobs:
+  format:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        language: [java, dotnet, js, python]
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up JDK (for Java)
+        if: matrix.language == 'java'
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Install .NET SDK
+        if: matrix.language == 'dotnet'
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '7.0.x'
+
+      - name: Set up Node.js
+        if: matrix.language == 'js'
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install Python
+        if: matrix.language == 'python'
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Run Formatter
+        run: |
+          if [ "${{ matrix.language }}" == "java" ]; then
+            ./gradlew spotlessCheck || ./mvnw spotless:check
+          elif [ "${{ matrix.language }}" == "dotnet" ]; then
+            dotnet format --verify-no-changes
+          elif [ "${{ matrix.language }}" == "js" ]; then
+            npx prettier --check .
+          elif [ "${{ matrix.language }}" == "python" ]; then
+            black --check .
+          fi
