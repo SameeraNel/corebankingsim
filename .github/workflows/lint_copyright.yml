@@ -40,4 +40,4 @@ jobs:
             distribution: temurin
             java-version: 17  # adjust to your Java version
         - name: Validate Formatting
-          run: mvn spotless:apply
+          run: mvn spotless:check
