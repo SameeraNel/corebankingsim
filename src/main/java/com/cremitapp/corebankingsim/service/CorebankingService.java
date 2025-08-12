@@ -10,7 +10,7 @@ public class CorebankingService {
     private static final Logger logger = LogManager.getLogger(CorebankingService.class);
 
     public String processSwitchOutwardTransfer(String fromAccount, String toAccount, String merchantRefId,
-            String bankRefId) {
+            String bankRefId) {P
         final String ceftrReferenceNumber = "CEFT-" + System.currentTimeMillis();
         logger.info(
                 "CEFT Outward transfer from {} Intermediate Remittance Account {} to Outward Account {} with merchantRefId: {} and BankRefId: {} initiated.",

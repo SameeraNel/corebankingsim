@@ -27,10 +27,12 @@ public class CorebankingController {
         String merchantRefId = request.getMerchantRefId();
         String bankRefId = request.getBankRefId();
 
-        logger.info("CEFT Outward Transfer request received | fromAccount: [{}] | toAccount: [{}] | merchantRefId: [{}] | bankRefId: [{}]",
+        logger.info(
+                "CEFT Outward Transfer request received | fromAccount: [{}] | toAccount: [{}] | merchantRefId: [{}] | bankRefId: [{}]",
                 fromAccount, toAccount, merchantRefId, bankRefId);
 
-        String message = corebankingService.processSwitchOutwardTransfer(fromAccount, toAccount, merchantRefId, bankRefId);
+        String message = corebankingService.processSwitchOutwardTransfer(fromAccount, toAccount, merchantRefId,
+                bankRefId);
 
         Map<String, Object> response = new HashMap<>();
         response.put("status", "success");
@@ -47,7 +49,8 @@ public class CorebankingController {
         String merchantRefId = request.getMerchantRefId();
         String bankRefId = request.getBankRefId();
 
-        logger.info("Internal Fund Transfer request recieved | fromAccount: [{}] | toAccount: [{}] | merchantRefId: [{}] | bankRefId: [{}]",
+        logger.info(
+                "Internal Fund Transfer request recieved | fromAccount: [{}] | toAccount: [{}] | merchantRefId: [{}] | bankRefId: [{}]",
                 fromAccount, toAccount, merchantRefId, bankRefId);
 
         String message = corebankingService.processCdciFundTransfer(fromAccount, toAccount, merchantRefId, bankRefId);
