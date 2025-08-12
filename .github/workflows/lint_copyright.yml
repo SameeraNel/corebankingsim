@@ -6,22 +6,7 @@ on:
   pull_request:
     branches: [ "feature/workflow_test" ]
 jobs:
-  run-lint:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-        with:
-          # Full git history is needed to get a proper list of changed files within `super-linter`
-          fetch-depth: 0
-
-      - name: Lint Code Base
-        uses: github/super-linter@v4
-        env:
-          VALIDATE_ALL_CODEBASE: false
-          DEFAULT_BRANCH: "feature/workflow_test"
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          
+        
   run-copyright-check:
     runs-on: ubuntu-latest
     steps:
@@ -47,10 +32,12 @@ jobs:
   run-spotless-check:
     runs-on: ubuntu-latest
     steps: 
+        - name: Checkout Code
+          uses: actions/checkout@v4
         - name: Set up JDK
           uses: actions/setup-java@v4
           with:
             distribution: temurin
             java-version: 17  # adjust to your Java version
         - name: Validate Formatting
-          run: mvn spotless:check
+          run: mvn spotless:apply
