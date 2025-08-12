@@ -16,8 +16,7 @@ public class CorebankingController {
 
   private static final Logger logger = LoggerFactory.getLogger(CorebankingController.class);
 
-  @Autowired
-  private CorebankingService corebankingService;
+  @Autowired private CorebankingService corebankingService;
 
   @PostMapping("/switch/cdci/outwardTransfer")
   public ResponseEntity<Map<String, Object>> fundTransferViaSwitch(
@@ -34,8 +33,9 @@ public class CorebankingController {
         merchantRefId,
         bankRefId);
 
-    String message = corebankingService.processSwitchOutwardTransfer(
-        fromAccount, toAccount, merchantRefId, bankRefId);
+    String message =
+        corebankingService.processSwitchOutwardTransfer(
+            fromAccount, toAccount, merchantRefId, bankRefId);
 
     Map<String, Object> response = new HashMap<>();
     response.put("status", "success");
@@ -60,8 +60,9 @@ public class CorebankingController {
         merchantRefId,
         bankRefId);
 
-    String message = corebankingService.processCdciFundTransfer(
-        fromAccount, toAccount, merchantRefId, bankRefId);
+    String message =
+        corebankingService.processCdciFundTransfer(
+            fromAccount, toAccount, merchantRefId, bankRefId);
 
     Map<String, Object> response = new HashMap<>();
     response.put("status", "success");
@@ -69,6 +70,5 @@ public class CorebankingController {
     response.put("merchantRefId", merchantRefId);
 
     return ResponseEntity.ok(response);
-
   }
 }
