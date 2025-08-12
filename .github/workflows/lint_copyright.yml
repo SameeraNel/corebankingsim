@@ -51,7 +51,6 @@ jobs:
           uses: actions/setup-java@v4
           with:
             distribution: temurin
-            java-version: 21  # adjust to your Java version
-
+            java-version: 17  # adjust to your Java version
         - name: Validate Formatting
           run: mvn spotless:check
