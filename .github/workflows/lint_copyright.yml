@@ -32,6 +32,8 @@ jobs:
   run-spotless-check:
     runs-on: ubuntu-latest
     steps: 
+        - name: Checkout Code
+          uses: actions/checkout@v4
         - name: Set up JDK
           uses: actions/setup-java@v4
           with:
