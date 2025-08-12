@@ -43,3 +43,15 @@ jobs:
         with:
           sast-scan: true
           debricked-sca-scan: true
+
+  run-spotless-check:
+    runs-on: ubuntu-latest
+    steps: 
+        - name: Set up JDK
+          uses: actions/setup-java@v4
+          with:
+            distribution: temurin
+            java-version: 21  # adjust to your Java version
+
+        - name: Validate Formatting
+          run: mvn spotless:check
