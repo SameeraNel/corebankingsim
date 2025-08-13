@@ -1,4 +1,4 @@
-name: DevIntegration CI
+name: DevIntegrationCI
 on:
   push:
     branches: [ "feature/workflow_test" ]
