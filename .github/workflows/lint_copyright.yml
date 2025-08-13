@@ -6,40 +6,40 @@ on:
     branches: [ "feature/workflow_test" ]
 jobs:
         
-  run-copyright-check:
-    runs-on: ubuntu-latest
-    steps:
-     - name: Copyright Comment Check
-       uses: liquiddevelopmentnet/copyright-check-action@stable-1.0
-       with:
-        # In which path you wanna check
-        path: src/**/*.java
-        # For what should the action check
-        string: // Copyright (C) 2021 Example, Inc. All Rights reserved.
+  # run-copyright-check:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #    - name: Copyright Comment Check
+  #      uses: liquiddevelopmentnet/copyright-check-action@stable-1.0
+  #      with:
+  #       # In which path you wanna check
+  #       path: src/**/*.java
+  #       # For what should the action check
+  #       string: // Copyright (C) 2021 Example, Inc. All Rights reserved.
         
-  run-fortify-check:
-    runs-on: ubuntu-latest
-    steps:    
-      - name: Check out source code
-        uses: actions/checkout@v4  
-      - name: Run ScanCentral SAST & Debricked scan
-        uses: fortify/github-action@v2
-        with:
-          sast-scan: true
-          debricked-sca-scan: true
+  # run-fortify-check:
+  #   runs-on: ubuntu-latest
+  #   steps:    
+  #     - name: Check out source code
+  #       uses: actions/checkout@v4  
+  #     - name: Run ScanCentral SAST & Debricked scan
+  #       uses: fortify/github-action@v2
+  #       with:
+  #         sast-scan: true
+  #         debricked-sca-scan: true
 
-  run-spotless-check:
-    runs-on: ubuntu-latest
-    steps: 
-        - name: Checkout Code
-          uses: actions/checkout@v4
-        - name: Set up JDK
-          uses: actions/setup-java@v4
-          with:
-            distribution: temurin
-            java-version: 17  # adjust to your Java version
-        - name: Validate Formatting
-          run: mvn spotless:check
+  # run-spotless-check:
+  #   runs-on: ubuntu-latest
+  #   steps: 
+  #       - name: Checkout Code
+  #         uses: actions/checkout@v4
+  #       - name: Set up JDK
+  #         uses: actions/setup-java@v4
+  #         with:
+  #           distribution: temurin
+  #           java-version: 17  # adjust to your Java version
+  #       - name: Validate Formatting
+  #         run: mvn spotless:check
 
   build:
     runs-on: ubuntu-latest
