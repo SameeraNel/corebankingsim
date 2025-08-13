@@ -16,4 +16,6 @@ jobs:
        uses: liquiddevelopmentnet/copyright-check-action@stable-1.0
        with:
         path: src/**/*.java
-        string: // Copyright (c) 2025 Sampath Bank PLC. All rights reserved.
+        string: "// Copyright (c) 2025 Sampath Bank PLC. All rights reserved."
+
+        
