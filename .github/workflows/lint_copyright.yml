@@ -1,5 +1,4 @@
-name: Lint & Copyright Check on Codebase
-
+name: DevIntegration CI
 on:
   push:
     branches: [ "feature/workflow_test" ]
@@ -41,3 +40,16 @@ jobs:
             java-version: 17  # adjust to your Java version
         - name: Validate Formatting
           run: mvn spotless:check
+
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: echo "Running build"
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment: Dev Integration  # <- This triggers approval
+    steps:
+      - run: echo "Deploying to production..."
