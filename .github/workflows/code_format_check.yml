@@ -43,7 +43,7 @@ jobs:
       - name: Run Formatter
         run: |
           if [ "${{ matrix.language }}" == "java" ]; then
-            ./mvnw spotless:check
+            mvn spotless:check
           elif [ "${{ matrix.language }}" == "dotnet" ]; then
             dotnet format --verify-no-changes
           elif [ "${{ matrix.language }}" == "js" ]; then
