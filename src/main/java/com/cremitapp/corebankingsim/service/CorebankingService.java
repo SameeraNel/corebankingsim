@@ -4,6 +4,8 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Service;
 
+// Copyright (c) 2025 Sampath Bank PLC. All rights reserved.
+
 @Service
 public class CorebankingService {
 

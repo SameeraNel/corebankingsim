@@ -1,5 +1,7 @@
 package com.cremitapp.corebankingsim.model;
 
+// Copyright (c) 2025 Sampath Bank PLC. All rights reserved.
+
 public class LedgerEntryRequestData {
   private String fromAccount;
   private String toAccount;
