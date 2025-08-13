@@ -10,11 +10,10 @@ jobs:
   run-copyright-check:
     runs-on: ubuntu-latest
     steps:
+     - name: Checkout Code
+       uses: actions/checkout@v4
      - name: Copyright Comment Check
        uses: liquiddevelopmentnet/copyright-check-action@stable-1.0
        with:
-        # In which path you wanna check
         path: src/**/*.java
-        # For what should the action check
-        string: // Copyright (C) 2021 Example, Inc. All Rights reserved.
-  
+        string: // Copyright (c) 2025 Sampath Bank PLC. All rights reserved.
