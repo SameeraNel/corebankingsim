@@ -1,4 +1,4 @@
-name: Lint & Copyright Check on Codebase
+name: Copyright Check
 
 on:
   push:
