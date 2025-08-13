@@ -47,7 +47,7 @@ jobs:
           elif [ "${{ matrix.language }}" == "dotnet" ]; then
             dotnet format --verify-no-changes
           elif [ "${{ matrix.language }}" == "js" ]; then
-            npx prettier --check .
+            npx prettier --write .
           elif [ "${{ matrix.language }}" == "python" ]; then
             black --check .
           fi
