@@ -1,0 +1,31 @@
+name: Env Selection
+
+on:
+  push:
+    branches: [ "feature/workflow_env" ]
+  pull_request:
+    branches: [ "feature/workflow_env" ]
+  workflow_dispatch:
+    inputs:
+      qa_env:
+        description: "Select QA environment"
+        required: true
+        type: choice
+        options:
+          - QA Env 1
+          - QA Env 2
+          - QA Env 3
+  
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: ${{ github.event.inputs.qa_env }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Selected QA Env
+        run: echo "Deploying to ${{ github.event.inputs.qa_env }}"
+
+    
+          
